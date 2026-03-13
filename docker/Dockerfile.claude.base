@@ -36,11 +36,17 @@ COPY --from=builder /src/build/picoclaw /usr/local/bin/picoclaw
 RUN addgroup -g 1000 picoclaw && \
     adduser -D -u 1000 -G picoclaw picoclaw
 
+# Create app directory
+# RUN mkdir /app
+
+# picoclaw should own this app directory
+# RUN chown -R picoclaw:picoclaw /app
+
 # Switch to non-root user
-USER picoclaw
+# USER picoclaw
 
 # Run onboard to create initial directories and config
-RUN /usr/local/bin/picoclaw onboard
+# RUN /usr/local/bin/picoclaw onboard
 
-ENTRYPOINT ["picoclaw"]
-CMD ["gateway"]
+# ENTRYPOINT ["picoclaw"]
+# CMD ["gateway"]
